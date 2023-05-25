@@ -22,10 +22,15 @@ interface FetchGamesResponse {
   results: Game[];
 }
 
-const useGames = (selectedGenre: Genre | null) => {
+const useGames = (
+  selectedGenre: Genre | null,
+  selectedPlatform: Platform | null
+) => {
   const [games, setGames] = useState<Game[]>([]);
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  console.log(selectedPlatform?.name);
+  console.log(selectedGenre?.name);
 
   useEffect(() => {
     setIsLoading(true);
@@ -33,7 +38,10 @@ const useGames = (selectedGenre: Genre | null) => {
     apiClient
       .get<FetchGamesResponse>("/games", {
         signal: controller.signal,
-        params: { genres: selectedGenre?.id },
+        params: {
+          genres: selectedGenre?.id,
+          parent_platforms: selectedPlatform?.id,
+        },
       })
       .then((response) => {
         setGames(response.data.results);
@@ -45,7 +53,7 @@ const useGames = (selectedGenre: Genre | null) => {
         setIsLoading(false);
       });
     return () => controller.abort();
-  }, [selectedGenre]);
+  }, [selectedGenre, selectedPlatform]);
 
   return { games, error, isLoading };
 };

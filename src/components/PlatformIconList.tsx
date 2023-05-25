@@ -21,9 +21,9 @@ const PlatformIconList = ({ platforms }: PlatformIconListProps) => {
   const iconSlugMap: { [key: string]: IconType } = {
     //x number ofbjects have keys of type string and each key is mapped to a type IconType
     android: FaAndroid,
-    mac: FaApple,
     ios: MdPhoneIphone,
     linux: FaLinux,
+    mac: FaApple,
     nintendo: SiNintendo,
     pc: FaWindows,
     playstation: FaPlaystation,
