@@ -1,23 +1,17 @@
-import React from "react";
+import { useState } from "react";
 import useGenres, { Genre } from "../hooks/useGenres";
-import {
-  Button,
-  HStack,
-  Image,
-  List,
-  ListItem,
-  Spinner,
-  Text,
-} from "@chakra-ui/react";
+import { Button, HStack, Image, List, ListItem } from "@chakra-ui/react";
 import getCroppedImageUrl from "../services/gameImageUrl";
 import GenreListSkeleton from "./GenreListSkeleton";
 
 interface GenreListProps {
   onSelectGenre: (genre: Genre) => void;
+  selectedGenre: Genre | null;
 }
 
-const GenreList = ({ onSelectGenre }: GenreListProps) => {
+const GenreList = ({ onSelectGenre, selectedGenre }: GenreListProps) => {
   const { genres, isLoading, error } = useGenres();
+  const [variant, setVariant] = useState("link");
   const skeletons = [1, 2, 3, 4, 5, 6];
 
   if (error) return null;
@@ -33,7 +27,15 @@ const GenreList = ({ onSelectGenre }: GenreListProps) => {
               borderRadius={8}
               src={getCroppedImageUrl(genre.image_background)}
             />
-            <Button variant="link" onClick={() => onSelectGenre(genre)}>
+            <Button
+              variant={selectedGenre?.name === genre.name ? "solid" : "link"}
+              fontWeight={
+                selectedGenre?.name === genre.name ? "bold" : "normal"
+              }
+              onClick={() => {
+                onSelectGenre(genre);
+              }}
+            >
               {genre.name.trim()}
             </Button>
           </HStack>
