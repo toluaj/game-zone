@@ -8,6 +8,7 @@ const GenreList = () => {
   const { genres, isLoading, error } = useGenres();
   const skeletons = [1, 2, 3, 4, 5, 6];
 
+  if (error) return null;
   return (
     <List>
       {isLoading &&
