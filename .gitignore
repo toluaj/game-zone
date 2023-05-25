@@ -12,6 +12,9 @@ dist
 dist-ssr
 *.local
 
+/src/services/apiClient.ts
+src/services/apiClient.ts
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
