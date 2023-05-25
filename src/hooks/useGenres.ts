@@ -17,7 +17,7 @@ interface FetchGenresResponse {
 const useGenres = () => {
   const [genres, setGenres] = useState<Genre[]>([]);
   const [error, setError] = useState("");
-  const [IsLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     setIsLoading(true);
@@ -36,7 +36,7 @@ const useGenres = () => {
     return () => controller.abort();
   }, []);
 
-  return { genres, error, IsLoading };
+  return { genres, error, isLoading };
 };
 
 export default useGenres;

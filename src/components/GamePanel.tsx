@@ -8,7 +8,6 @@ const GamePanel = () => {
   const { games, error, IsLoading } = useGames();
   const skeletons = [1, 2, 3, 4, 5, 6];
 
-  console.log(IsLoading);
   return (
     <>
       <SimpleGrid
