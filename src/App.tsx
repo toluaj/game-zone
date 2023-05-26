@@ -8,6 +8,7 @@ import PlatformSelector from "./components/PlatformSelector";
 import { Platform } from "./hooks/useGames";
 import SortSelector from "./components/SortSelector";
 import GamePanelHeading from "./components/GamePanelHeading";
+import { Analytics } from "@vercel/analytics/react";
 
 export interface GameQuery {
   genre: Genre | null;
@@ -67,6 +68,7 @@ function App() {
         </Box>
         <GamePanel gameQuery={gameQuery} />
       </GridItem>
+      <Analytics />
     </Grid>
   );
 }
