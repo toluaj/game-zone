@@ -23,6 +23,7 @@ const SearchGamesInput = ({ onSearchGames }: SearchGamesInputProps) => {
           borderRadius={20}
           backgroundColor={"blackAlpha.100"}
           ref={searchRef}
+          variant={"outline"}
         />
       </InputGroup>
     </form>
