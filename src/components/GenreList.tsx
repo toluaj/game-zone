@@ -18,7 +18,6 @@ interface GenreListProps {
 
 const GenreList = ({ onSelectGenre, selectedGenre }: GenreListProps) => {
   const { genres, isLoading, error } = useGenres();
-  const [variant, setVariant] = useState("link");
   const skeletons = [1, 2, 3, 4, 5, 6];
 
   if (error) return null;
